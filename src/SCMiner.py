@@ -7,7 +7,7 @@ import numpy as np
 import pylab
 pylab = []
 
-from reconstruct        import validate
+# from reconstruct        import validate
 from Bipartite          import Bipartite
 from mdllogger          import logmdl
 from mdllogger          import savemdl
