@@ -1,0 +1,99 @@
+div.page{
+    min-height: 768px;
+    padding: 40px 80px;
+    /* border: 1px solid rgba(0, 0, 0, 0.20); */
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin: 20px 50px;
+}
+
+div.page h1{
+    border-bottom: 8px solid #c3558c;
+    padding-bottom: 10px;
+}
+
+.page p, .page li, .page code{
+    font-size: 34px;
+    /* font-family: "Dejavu Sans"; */
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+s, strike{
+    color: #b00;
+}
+
+.page code {
+    color: #363;
+}
+
+em {
+    font-weight: bold;
+}
+
+.page blockquote {
+    width: 800px;
+}
+.page blockquote>p {
+    font-size: 30px;
+    line-height: 35px;
+    /* font-family: "Dejavu Sans Serif"; */
+}
+
+.page ul {
+    list-style-type: circle;
+}
+
+.page ul.list {
+    list-style-type: circle;
+}
+
+.page li>p{
+    border-left: 10px solid #c3558c;
+    padding-left: 20px;
+}
+
+.page h2{
+    background-color: #e8b4c1;
+    padding: 5px 30px;
+    margin-bottom: 20px;
+    font-size: 38px;
+    box-shadow: inset 1px 2px 2px 1px rgba(0, 0, 0, 0.6);
+    /* border-radius: 10px 10px 10px 0px; */
+}
+
+.page h3{
+    font-size: 35px;
+}
+
+.cover h1{
+    margin-top: 180px;
+    font-size: 60px;
+    line-height: 80px;
+}
+
+.table.data td, .table.data th{
+    padding: 10px 20px !important;
+    font-size: 18px !important;
+}
+
+body {
+    background-color: #eee !important;
+}
+
+body div.page {
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+}
+
+div.page span.page-number {
+    font-size: 20px;
+    background-color: #fff;
+}
+
+.cover th,.cover td{
+    /* width: 800px; */
+    margin-top: 100px;
+    font-size: 30px !important;
+    line-height: 50px !important;
+}

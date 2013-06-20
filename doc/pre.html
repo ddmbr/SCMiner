@@ -1,0 +1,405 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>
+        Presentation
+        </title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/master.css" />
+        <script src="js/jquery-1.8.3.min.js" type="text/javascript">
+        </script>
+        <script src="js/bootstrap.min.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <script src="js/master.js" type="text/javascript">
+        </script>
+        <div class="page cover">
+            <h1>
+            Mining Bipartite Graph with SCMiner
+            </h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                    Project
+                    </th>
+                    <td>
+                    Experiments and Analysis of the Algorithm SCMiner
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    Date
+                    </th>
+                    <td>
+                    19 June 2013
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    Members
+                    </th>
+                    <td>
+                    杨帆
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="page">
+            <h1>
+            Why Bipartite Graph?
+            </h1>
+            <p>
+            Many relations in real life can be expressed naturally in bipartite graph.
+            </p>
+            <ul>
+                <li>
+                viewers-movies
+                </li>
+                <li>
+                members-societies
+                </li>
+                <li>
+                costomers-products
+                </li>
+                <li>
+                articles-words
+                </li>
+            </ul>
+            <h3>
+            Why mining?
+            </h3>
+            <ul>
+                <li>
+                There may be important structure hidden in the mass graph.
+                </li>
+                <li>
+                E.g, older viewers love historical movies while the younger like action theme.
+                </li>
+                <li>
+                For building a recommendation system.
+                </li>
+            </ul>
+        </div>
+        <div class="page">
+            <h1>
+            How SCMiner works
+            </h1>
+            <p>
+            Input: a bipartite
+            </p>
+            <p>
+            Output:
+            </p>
+            <ul>
+                <li>
+                A summary graph Gs
+                </li>
+                <li>
+                An additional graph Ga
+                </li>
+                <li>
+                a grouping information table
+                </li>
+            </ul>
+        </div>
+        <div class="page">
+            <h1>
+            Example
+            </h1>
+            <p>
+            Input:
+            </p>
+            <img class="span4" src="img/pre-ex-in.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Example(cont.)
+            </h1>
+            <p>
+            Ouput:
+            </p>
+            <img class="span10" src="img/pre-ex-out.png" />
+        </div>
+        <div class="page">
+            <h1>
+            MDL based cost function
+            </h1>
+            <p>
+            MDL(Minimal Description Length) principle is a formalization of the Occam's Razor principle.
+            </p>
+            <ul>
+                <li>
+                The best hypothesis of data leads to the best compression of it.
+                </li>
+            </ul>
+            <p>
+            SCMiner tries to find a model(compression) to represent the original data with lowest possible coding cost.
+            </p>
+        </div>
+        <div class="page">
+            <h1>
+            MDL based cost function(cont.)
+            </h1>
+            <p>
+            First, assume that bipartites are represented using adjacency matrices(binary arrays).
+            </p>
+            <p>
+            Lower bound of the coding cost for such a binary array(a bipartite in fact), according to information theory
+            </p>
+            <img class="span12" src="img/cc.png" />
+            <p>
+            Lower bound of the coding cost for a grouping info table
+            </p>
+            <img class="span5" src="img/gcc.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Heuristic method: way to reach MDL
+            </h1>
+            <p>
+            similarity is defined by sim(i, j) = commonNeighbors/allNeighbors
+            </p>
+            <ol>
+                <li>
+                start with th = 1
+                </li>
+                <li>
+                find groups of nodes with sim >= th
+                </li>
+                <li>
+                If found, unify their linking pattern, merge them, and set th = 1. Save the model if it has new lowest coding cost.
+                </li>
+                <li>
+                If no group with sim >= th, decrease th a bit and go back to step 2.
+                </li>
+                <li>
+                if th = 0 and no groups found, return model with lowest coding cost encountered.
+                </li>
+            </ol>
+        </div>
+        <div class="page">
+            <h1>
+            Merging of nodes
+            </h1>
+            <img class="span5" src="img/ex-add.png" />
+            <div class="span12">
+                <p>
+                Either add or remove edges. Choose the action with fewer operations.
+                </p>
+            </div>
+        </div>
+        <div class="page">
+            <h1>
+            Merging of nodes(cont.)
+            </h1>
+            <h3>
+            edge add/remove cost definition
+            </h3>
+            <img class="span10" src="img/cost.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Sythetic Tests
+            </h1>
+            <h3>
+            Dataset
+            </h3>
+            <img class="span10" src="img/orig_cases.png" />
+            <div class="span12">
+                <p>
+                SCMiner can achieve perfect result when epsilon is carefully chosen.
+                </p>
+            </div>
+        </div>
+        <div class="page">
+            <h1>
+            Sythetic Tests(cont.)
+            </h1>
+            <h3>
+            Bad case
+            </h3>
+            <img class="span7" src="img/bp1_no_cost_mod_001_g.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Possible problems
+            </h1>
+            <p>
+            During a run of SCMiner
+            </p>
+            <img class="span7" src="img/vis1.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Possible problems(cont.)
+            </h1>
+            <p>
+            During a run of SCMiner
+            </p>
+            <img class="span7" src="img/vis2.png" />
+            <p>
+            There exists errors that were not corrected and persisted to the end.
+            </p>
+        </div>
+        <div class="page">
+            <h1>
+            Improvements on edge add/remove condition
+            </h1>
+            <h3>
+            The new formula
+            </h3>
+            <div class="span10">
+                <img src="img/newcost.png" />
+            </div>
+            <div class="span12">
+                <h3>
+                Main difference
+                </h3>
+                <ol>
+                    <li>
+                    Original criterion: Calculate the cost of the changement between two step.
+                    </li>
+                    <li>
+                    New criterion: Calculate the cost of the changement between the very beginning and the current step.
+                    </li>
+                </ol>
+                <p>
+                In this sense, attempts to correct wrong edges will be ecouraged with negective cost.
+                </p>
+            </div>
+        </div>
+        <div class="page">
+            <h1>
+            Improved result
+            </h1>
+            <img class="span7" src="img/testmdl.png" />
+            <p>
+            SCMiner now produces correct result with a much wider range of epsilon.
+            </p>
+        </div>
+        <div class="page">
+            <h1>
+            Three Extra Harsher Cases
+            </h1>
+            <h3>
+            Dataset
+            </h3>
+            <img class="span10" src="img/orig_cases.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Three Extra Harsher Cases(cont.)
+            </h1>
+            <h3>
+            Result by original algorithm(epsilon set to 0.1)
+            </h3>
+            <img class="span12" src="img/badres.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Three Extra Harsher Cases(cont.)
+            </h1>
+            <h3>
+            Result by improved algorithm(epsilon set to 0.1)
+            </h3>
+            <img class="span12" src="img/goodres.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Test on real data
+            </h1>
+            <p>
+            The dataset used is 20,000 news article and the terms they used.
+            </p>
+            <p>
+            The test uses SCMiner to discriminate baseball news from computer graphics news.
+            </p>
+            <p>
+            Result is not good
+            </p>
+            <ol>
+                <li>
+                Purity is only around 60% to 80%
+                </li>
+                <li>
+                Many small cluster with size 1
+                </li>
+            </ol>
+        </div>
+        <div class="page">
+            <h1>
+            Test on real data(cont.)
+            </h1>
+            <img class="span10" src="img/mdl.png" />
+            <div class="span12">
+                <p>
+                At that point two article nodes were merging. Their common connections are key words(code, img, graphic, etc), but the far more connections not in common are mostly unimportant terms(gatekeeper, assemble, etc)
+                </p>
+                <p>
+                This results in a huge increase in the explanation needed in Ga
+                </p>
+            </div>
+        </div>
+        <div class="page">
+            <h1>
+            Test on real data(cont.)
+            </h1>
+            <p>
+            Introduce information entropy to discriminate different information importances.
+            </p>
+            <img class="span8" src="img/entropy.png" />
+            <div class="span12">
+                <ul>
+                    <li>
+                    Purity increases with only 10%
+                    </li>
+                    <li>
+                    Runtime increases with nearly 3000%
+                    </li>
+                    <li>
+                    Further optimization yet to do
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page">
+            <h1>
+            Further improvements
+            </h1>
+            <ol>
+                <li>
+                Introduce the calculation and use of information entropy in all aspects related.
+                </li>
+                <li>
+                Try something new.
+                </li>
+            </ol>
+            <p>
+            For example, AutoEncoder
+            </p>
+            <img class="span8" src="img/autoencoder.png" />
+        </div>
+        <div class="page">
+            <h1>
+            Further improvements(cont.)
+            </h1>
+            <p>
+            Input the data matrix row by row as the input signals.
+            </p>
+            <p>
+            Input signals and output signals:
+            </p>
+            <img class="span5" src="img/ae-bp3-in.png" />
+            <img class="span5" src="img/ae-bp3-out.png" />
+        </div>
+        <div class="page">
+            <h1>
+            End
+            </h1>
+            <p>
+            Thank you!
+            </p>
+        </div>
+    </body>
+</html>
