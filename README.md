@@ -19,6 +19,8 @@ Here's some useful information about what's included:
 Usage
 -----
 
+To begin with, as the dataset is very large, they should be decompressed before use. Please check src/test/newsgroups/20\_newsgroups.tar.gz and src/test/movielens/ml-100k.zip
+
 Use runtest.py to run a test case. It may recieve one parameter, the epsilon, for example,
 
     python runtest.py 0.15
