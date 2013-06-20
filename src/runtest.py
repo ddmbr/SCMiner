@@ -13,7 +13,6 @@ import test.synthetic_bp6.test      as syntheticTest6
 
 from SCMiner        import SCMiner
 from Bipartite      import Bipartite
-# import utils
 import pickle
 import sys
 
@@ -21,6 +20,10 @@ eps = 0.1
 if len(sys.argv) > 1:
     eps = float(sys.argv[-1])
 
+#
+# To run another test, switch off an uncommented line
+# and switch on the line wanted
+#
 G = Bipartite()
 # G = newsgroupsTest.gen_data(G)
 # G = twoPersonTest.gen_data(G)
