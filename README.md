@@ -31,7 +31,7 @@ To visualize the node clustering process, either run the following:
 
     python gen_grid.py bipartite_half
 
-in juxtaposed with runtest.py, or use:
+juxtaposed with runtest.py, or use:
 
     python gen_img.py bipartite output.png
 
